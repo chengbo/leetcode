@@ -1,6 +1,7 @@
 import unittest
 from leetcode.binary_tree.tree_node import TreeNode
 from leetcode.binary_tree.preorder_traversal import preorder_traversal
+from leetcode.binary_tree.inorder_traversal import inorder_traversal
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -19,6 +20,21 @@ class TestBinaryTree(unittest.TestCase):
 
         result = preorder_traversal(node)
         self.assertEqual(result, [1, 2, 3])
+
+    def test_inorder_traversal(self):
+        """
+        1
+         \
+          2
+         /
+        3
+        """
+        node = TreeNode(1)
+        node.right = TreeNode(2)
+        node.right.left = TreeNode(3)
+
+        result = inorder_traversal(node)
+        self.assertEqual(result, [1, 3, 2])
 
 
 if __name__ == '__main__':

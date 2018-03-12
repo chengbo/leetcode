@@ -4,6 +4,7 @@ from leetcode.binary_tree.preorder_traversal import preorder_traversal
 from leetcode.binary_tree.inorder_traversal import inorder_traversal
 from leetcode.binary_tree.postorder_traversal import postorder_traversal
 from leetcode.binary_tree.level_order_traversal import level_order_traversal
+from leetcode.binary_tree.maximum_depth import maximum_depth, maximum_depth2
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -69,6 +70,26 @@ class TestBinaryTree(unittest.TestCase):
 
         result = level_order_traversal(node)
         self.assertEqual(result, [[3], [9, 20], [15, 7]])
+
+    def test_maximum_depth(self):
+        """
+          3
+         / \
+        9  20
+          /  \
+         15   7
+        """
+        node = TreeNode(3)
+        node.left = TreeNode(9)
+        node.right = TreeNode(20)
+        node.right.left = TreeNode(15)
+        node.right.right = TreeNode(7)
+
+        result = maximum_depth(node)
+        self.assertEqual(result, 3)
+
+        result = maximum_depth2(node, 0)
+        self.assertEqual(result, 3)
 
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ from leetcode.binary_tree.inorder_traversal import inorder_traversal
 from leetcode.binary_tree.postorder_traversal import postorder_traversal
 from leetcode.binary_tree.level_order_traversal import level_order_traversal
 from leetcode.binary_tree.maximum_depth import maximum_depth, maximum_depth2
+from leetcode.binary_tree.symmetric_tree import is_symmetric_tree
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -90,6 +91,41 @@ class TestBinaryTree(unittest.TestCase):
 
         result = maximum_depth2(node, 0)
         self.assertEqual(result, 3)
+
+    def test_symmetric_tree(self):
+        """
+            1
+           / \
+          2   2
+         / \ / \
+        3  4 4  3
+        """
+        node = TreeNode(1)
+        node.left = TreeNode(2)
+        node.left.left = TreeNode(3)
+        node.left.right = TreeNode(4)
+        node.right = TreeNode(2)
+        node.right.left = TreeNode(4)
+        node.right.right = TreeNode(3)
+
+        result = is_symmetric_tree(node)
+        self.assertTrue(result)
+
+        """
+          1
+         / \
+        2   2
+         \   \
+         3    3
+        """
+        node = TreeNode(1)
+        node.left = TreeNode(2)
+        node.left.right = TreeNode(3)
+        node.right = TreeNode(2)
+        node.right.right = TreeNode(3)
+
+        result = is_symmetric_tree(node)
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':

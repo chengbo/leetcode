@@ -7,6 +7,7 @@ from leetcode.binary_tree.level_order_traversal import level_order_traversal
 from leetcode.binary_tree.maximum_depth import maximum_depth, maximum_depth2
 from leetcode.binary_tree.symmetric_tree import is_symmetric_tree
 from leetcode.binary_tree.path_sum import has_path_sum
+from leetcode.binary_tree.construct_binary_tree import build_tree_from_i_and_p
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -150,6 +151,24 @@ class TestBinaryTree(unittest.TestCase):
 
         result = has_path_sum(node, 22)
         self.assertTrue(result)
+
+    def test_build_tree_from_i_and_p(self):
+        """
+          3
+         / \
+        9  20
+          /  \
+         15   7
+        """
+        inorder = [9, 3, 15, 20, 7]
+        postorder = [9, 15, 7, 20, 3]
+
+        node = build_tree_from_i_and_p(inorder, postorder)
+        self.assertEqual(node.val, 3)
+        self.assertTrue(node.left.val, 9)
+        self.assertTrue(node.right.val, 20)
+        self.assertTrue(node.right.left.val, 15)
+        self.assertTrue(node.right.right.val, 7)
 
 
 if __name__ == '__main__':

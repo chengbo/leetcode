@@ -1,5 +1,5 @@
 import unittest
-from leetcode.binary_tree.tree_node import TreeNode
+from leetcode.binary_tree.tree_node import TreeNode, TreeLinkNode
 from leetcode.binary_tree.preorder_traversal import preorder_traversal
 from leetcode.binary_tree.inorder_traversal import inorder_traversal
 from leetcode.binary_tree.postorder_traversal import postorder_traversal
@@ -10,6 +10,7 @@ from leetcode.binary_tree.path_sum import has_path_sum
 from leetcode.binary_tree.construct_binary_tree import (
     build_tree_from_i_and_p,
     build_tree_from_p_and_i)
+from leetcode.binary_tree.populating_next_right_pointers import connect
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -189,6 +190,32 @@ class TestBinaryTree(unittest.TestCase):
         self.assertTrue(node.right.val, 20)
         self.assertTrue(node.right.left.val, 15)
         self.assertTrue(node.right.right.val, 7)
+
+    def test_populating_next_right_pointers(self):
+        """
+            1
+           /  \
+          2    3
+         / \  / \
+        4  5  6  7
+        """
+        node = TreeLinkNode(1)
+        node.left = TreeLinkNode(2)
+        node.left.left = TreeLinkNode(4)
+        node.left.right = TreeLinkNode(5)
+        node.right = TreeLinkNode(3)
+        node.right.left = TreeLinkNode(6)
+        node.right.right = TreeLinkNode(7)
+
+        connect(node)
+
+        self.assertIsNone(node.next)
+        self.assertIsNone(node.right.next)
+        self.assertIsNone(node.right.right.next)
+        self.assertEqual(node.left.next.val, 3)
+        self.assertEqual(node.left.left.next.val, 5)
+        self.assertEqual(node.left.right.next.val, 6)
+        self.assertEqual(node.right.left.next.val, 7)
 
 
 if __name__ == '__main__':

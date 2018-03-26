@@ -10,7 +10,8 @@ from leetcode.binary_tree.path_sum import has_path_sum
 from leetcode.binary_tree.construct_binary_tree import (
     build_tree_from_i_and_p,
     build_tree_from_p_and_i)
-from leetcode.binary_tree.populating_next_right_pointers import connect
+from leetcode.binary_tree.populating_next_right_pointers import (
+    connect, connect_ii)
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -216,6 +217,30 @@ class TestBinaryTree(unittest.TestCase):
         self.assertEqual(node.left.left.next.val, 5)
         self.assertEqual(node.left.right.next.val, 6)
         self.assertEqual(node.right.left.next.val, 7)
+
+    def test_populating_next_right_pointers_ii(self):
+        """
+            1
+           / \
+          2   3
+         / \   \
+        4  5    7
+        """
+        node = TreeLinkNode(1)
+        node.left = TreeLinkNode(2)
+        node.left.left = TreeLinkNode(4)
+        node.left.right = TreeLinkNode(5)
+        node.right = TreeLinkNode(3)
+        node.right.right = TreeLinkNode(7)
+
+        connect_ii(node)
+
+        self.assertIsNone(node.next)
+        self.assertIsNone(node.right.next)
+        self.assertIsNone(node.right.right.next)
+        self.assertEqual(node.left.next.val, 3)
+        self.assertEqual(node.left.left.next.val, 5)
+        self.assertEqual(node.left.right.next.val, 7)
 
 
 if __name__ == '__main__':

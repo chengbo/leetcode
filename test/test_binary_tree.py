@@ -12,6 +12,7 @@ from leetcode.binary_tree.construct_binary_tree import (
     build_tree_from_p_and_i)
 from leetcode.binary_tree.populating_next_right_pointers import (
     connect, connect_ii)
+from leetcode.binary_tree.lowest_common_ancestor import lowest_common_ancestor
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -241,6 +242,32 @@ class TestBinaryTree(unittest.TestCase):
         self.assertEqual(node.left.next.val, 3)
         self.assertEqual(node.left.left.next.val, 5)
         self.assertEqual(node.left.right.next.val, 7)
+
+    def test_lowest_common_ancestor(self):
+        """
+             _______3______
+            /              \
+         ___5__          ___1__
+        /      \        /      \
+        6      _2       0       8
+              /  \
+              7   4
+        """
+        node = TreeNode(3)
+        node.left = TreeNode(5)
+        node.left.left = TreeNode(6)
+        node.left.right = TreeNode(2)
+        node.left.right.left = TreeNode(7)
+        node.left.right.right = TreeNode(4)
+        node.right = TreeNode(1)
+        node.right.left = TreeNode(0)
+        node.right.right = TreeNode(8)
+
+        a1 = lowest_common_ancestor(node, node.left, node.right)
+        self.assertEqual(a1, node)
+
+        a2 = lowest_common_ancestor(node, node.left, node.left.right.right)
+        self.assertEqual(a2, node.left)
 
 
 if __name__ == '__main__':

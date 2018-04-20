@@ -1,7 +1,8 @@
 import unittest
 from leetcode.binary_tree.tree_node import TreeNode, TreeLinkNode
 from leetcode.binary_tree.preorder_traversal import preorder_traversal
-from leetcode.binary_tree.inorder_traversal import inorder_traversal
+from leetcode.binary_tree.inorder_traversal import (inorder_traversal,
+                                                    morris_inorder_traversal)
 from leetcode.binary_tree.postorder_traversal import postorder_traversal
 from leetcode.binary_tree.level_order_traversal import level_order_traversal
 from leetcode.binary_tree.maximum_depth import maximum_depth, maximum_depth2
@@ -48,6 +49,24 @@ class TestBinaryTree(unittest.TestCase):
 
         result = inorder_traversal(node)
         self.assertEqual(result, [1, 3, 2])
+
+        """
+                1
+              /   \
+            2      3
+          /  \
+        4     5
+        """
+        node = TreeNode(1)
+        node.left = TreeNode(2)
+        node.left.left = TreeNode(4)
+        node.left.right = TreeNode(5)
+        node.right = TreeNode(3)
+
+        result = inorder_traversal(node)
+        self.assertEqual(result, [4, 2, 5, 1, 3])
+        result = morris_inorder_traversal(node)
+        self.assertEqual(result, [4, 2, 5, 1, 3])
 
     def test_postorder_traversal(self):
         """

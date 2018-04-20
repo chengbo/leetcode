@@ -24,3 +24,16 @@ def is_valid_bst(root):
                 current = current.right
 
     return True
+
+
+def is_valid_bst_ii(root):
+    def traversal(node):
+        if node is None:
+            return []
+        result = traversal(node.left)
+        result += [node.val]
+        result += traversal(node.right)
+        return result
+    l = traversal(root)
+
+    return all(l[i] < l[i+1] for i in range(len(l) - 1))

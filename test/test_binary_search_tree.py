@@ -3,6 +3,8 @@ from leetcode.binary_tree.serialize_and_deserialize import deserialize
 from leetcode.binary_search_tree.validate_binary_search_tree import is_valid_bst
 from leetcode.binary_search_tree.binary_search_tree_iterator import BSTIterator
 from leetcode.binary_search_tree.search_in_binary_search_tree import search_bst
+from leetcode.binary_search_tree.insert_into_a_binary_search_tree import (
+    insert_into_bst)
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -66,3 +68,21 @@ class TestBinaryTree(unittest.TestCase):
         self.assertIsNone(node2.right)
         node3 = search_bst(node, 9999)
         self.assertIsNone(node3)
+
+    def test_insert_into_bst(self):
+        """
+            8
+           /  \
+          3    10
+         / \      \
+        1   6      14
+           / \    /
+          4   7  13
+        """
+        node = deserialize('8,3,1,#,#,6,4,#,#,7,#,#,10,#,14,13,#,#,#')
+        node1 = insert_into_bst(node, 2)
+        node2 = insert_into_bst(node, 15)
+        self.assertTrue(is_valid_bst(node1))
+        self.assertTrue(is_valid_bst(node2))
+        self.assertEqual(node1.left.left.right.val, 2)
+        self.assertEqual(node2.right.right.right.val, 15)

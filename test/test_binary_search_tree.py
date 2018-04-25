@@ -1,10 +1,12 @@
 import unittest
+from leetcode.binary_tree.preorder_traversal import preorder_traversal
 from leetcode.binary_tree.serialize_and_deserialize import deserialize
 from leetcode.binary_search_tree.validate_binary_search_tree import is_valid_bst
 from leetcode.binary_search_tree.binary_search_tree_iterator import BSTIterator
 from leetcode.binary_search_tree.search_in_binary_search_tree import search_bst
 from leetcode.binary_search_tree.insert_into_a_binary_search_tree import (
     insert_into_bst)
+from leetcode.binary_search_tree.delete_node_in_a_bst import delete_node
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -86,3 +88,26 @@ class TestBinaryTree(unittest.TestCase):
         self.assertTrue(is_valid_bst(node2))
         self.assertEqual(node1.left.left.right.val, 2)
         self.assertEqual(node2.right.right.right.val, 15)
+
+    def test_delete_node(self):
+        """
+            8
+           /  \
+          3    10
+         / \      \
+        1   6      14
+           / \    /
+          4   7  13
+        """
+        node = deserialize('8,3,1,#,#,6,4,#,#,7,#,#,10,#,14,13,#,#,#')
+        node1 = delete_node(node, 1)
+        self.assertEqual(preorder_traversal(node1), [
+                         8, 3, 6, 4, 7, 10, 14, 13])
+        node = deserialize('8,3,1,#,#,6,4,#,#,7,#,#,10,#,14,13,#,#,#')
+        node2 = delete_node(node, 10)
+        self.assertEqual(preorder_traversal(node2), [
+                         8, 3, 1, 6, 4, 7, 14, 13])
+        node = deserialize('8,3,1,#,#,6,4,#,#,7,#,#,10,#,14,13,#,#,#')
+        node3 = delete_node(node, 14)
+        self.assertEqual(preorder_traversal(node3), [
+                         8, 3, 1, 6, 4, 7, 10, 13])

@@ -7,6 +7,7 @@ from leetcode.binary_search_tree.search_in_binary_search_tree import search_bst
 from leetcode.binary_search_tree.insert_into_a_binary_search_tree import (
     insert_into_bst)
 from leetcode.binary_search_tree.delete_node_in_a_bst import delete_node
+from leetcode.binary_search_tree.lowest_common_ancestor import lca
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -111,3 +112,18 @@ class TestBinaryTree(unittest.TestCase):
         node3 = delete_node(node, 14)
         self.assertEqual(preorder_traversal(node3), [
                          8, 3, 1, 6, 4, 7, 10, 13])
+
+    def test_lca(self):
+        """
+            8
+           /  \
+          3    10
+         / \      \
+        1   6      14
+           / \    /
+          4   7  13
+        """
+        node = deserialize('8,3,1,#,#,6,4,#,#,7,#,#,10,#,14,13,#,#,#')
+        self.assertEqual(lca(node, 1, 14).val, 8)
+        self.assertEqual(lca(node, 1, 7).val, 3)
+        self.assertEqual(lca(node, 13, 10).val, 10)

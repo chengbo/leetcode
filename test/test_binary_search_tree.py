@@ -8,6 +8,7 @@ from leetcode.binary_search_tree.insert_into_a_binary_search_tree import (
     insert_into_bst)
 from leetcode.binary_search_tree.delete_node_in_a_bst import delete_node
 from leetcode.binary_search_tree.lowest_common_ancestor import lca
+from leetcode.binary_search_tree.balanced import is_balanced
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -127,3 +128,25 @@ class TestBinaryTree(unittest.TestCase):
         self.assertEqual(lca(node, 1, 14).val, 8)
         self.assertEqual(lca(node, 1, 7).val, 3)
         self.assertEqual(lca(node, 13, 10).val, 10)
+
+    def test_is_balanced(self):
+        """
+           3
+          / \
+         9  20
+           /  \
+          15   7
+        """
+        node = deserialize('3,9,#,#,20,15,#,#,7,#,#')
+        self.assertTrue(is_balanced(node))
+        """
+               1
+              / \
+             2   2
+            / \
+           3   3
+          / \
+         4   4
+        """
+        node = deserialize('1,2,3,4,#,#,4,#,#,3,#,#,2,#,#')
+        self.assertFalse(is_balanced(node))

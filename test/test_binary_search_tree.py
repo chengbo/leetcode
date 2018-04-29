@@ -1,6 +1,6 @@
 import unittest
 from leetcode.binary_tree.preorder_traversal import preorder_traversal
-from leetcode.binary_tree.serialize_and_deserialize import deserialize
+from leetcode.binary_tree.serialize_and_deserialize import serialize, deserialize
 from leetcode.binary_search_tree.validate_binary_search_tree import is_valid_bst
 from leetcode.binary_search_tree.binary_search_tree_iterator import BSTIterator
 from leetcode.binary_search_tree.search_in_binary_search_tree import search_bst
@@ -9,6 +9,7 @@ from leetcode.binary_search_tree.insert_into_a_binary_search_tree import (
 from leetcode.binary_search_tree.delete_node_in_a_bst import delete_node
 from leetcode.binary_search_tree.lowest_common_ancestor import lca
 from leetcode.binary_search_tree.balanced import is_balanced
+from leetcode.binary_search_tree.convert_sorted_array_to_binary_search_tree import sorted_array_to_bst
 
 
 class TestBinaryTree(unittest.TestCase):
@@ -150,3 +151,15 @@ class TestBinaryTree(unittest.TestCase):
         """
         node = deserialize('1,2,3,4,#,#,4,#,#,3,#,#,2,#,#')
         self.assertFalse(is_balanced(node))
+
+    def test_sorted_array_to_bst(self):
+        """
+              0
+             / \
+           -3   9
+           /   /
+         -10  5
+        """
+        arr = [-10, -3, 0, 5, 9]
+        node = sorted_array_to_bst(arr)
+        self.assertEqual(serialize(node), '0,-3,-10,#,#,#,9,5,#,#,#')

@@ -1,5 +1,7 @@
 import unittest
+from leetcode.linked_list.cycle import has_cycle
 from leetcode.linked_list.my_linked_list import MyLinkedList
+from leetcode.linked_list.node import SinglyListNode
 
 
 class TestLinkedList(unittest.TestCase):
@@ -29,3 +31,18 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(3, list.get(0))
         list.deleteAtIndex(0)
         self.assertEqual(-1, list.get(0))
+
+    def test_has_cycle(self):
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(3)
+        self.assertFalse(has_cycle(head))
+
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        node = SinglyListNode(3)
+        head.next.next = node
+        head.next.next.next = SinglyListNode(4)
+        head.next.next.next.next = SinglyListNode(5)
+        head.next.next.next.next.next = node
+        self.assertTrue(has_cycle(head))

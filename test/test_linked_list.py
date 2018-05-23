@@ -5,6 +5,7 @@ from leetcode.linked_list.my_linked_list import MyLinkedList
 from leetcode.linked_list.node import SinglyListNode
 from leetcode.linked_list.remove_nth_from_end import remove_nth_from_end
 from leetcode.linked_list.reverse import reverse_list
+from leetcode.linked_list.remove_elements import remove_elements
 
 
 class TestLinkedList(unittest.TestCase):
@@ -127,3 +128,31 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(3, result.val)
         self.assertEqual(2, result.next.val)
         self.assertEqual(1, result.next.next.val)
+
+    def test_remove_elements(self):
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(1)
+        result = remove_elements(head, 1)
+        self.assertIsNone(result)
+
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(6)
+        head.next.next.next = SinglyListNode(3)
+        head.next.next.next.next = SinglyListNode(4)
+        head.next.next.next.next.next = SinglyListNode(5)
+        head.next.next.next.next.next.next = SinglyListNode(6)
+        result = remove_elements(head, 6)
+        self.assertEqual(1, result.val)
+        self.assertEqual(2, result.next.val)
+        self.assertEqual(3, result.next.next.val)
+        self.assertEqual(4, result.next.next.next.val)
+        self.assertEqual(5, result.next.next.next.next.val)
+
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(2)
+        head.next.next.next = SinglyListNode(1)
+        result = remove_elements(head, 2)
+        self.assertEqual(1, result.val)
+        self.assertEqual(1, result.next.val)

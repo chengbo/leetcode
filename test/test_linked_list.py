@@ -4,6 +4,7 @@ from leetcode.linked_list.intersection import get_intersection_node
 from leetcode.linked_list.my_linked_list import MyLinkedList
 from leetcode.linked_list.node import SinglyListNode
 from leetcode.linked_list.remove_nth_from_end import remove_nth_from_end
+from leetcode.linked_list.reverse import reverse_list
 
 
 class TestLinkedList(unittest.TestCase):
@@ -117,3 +118,12 @@ class TestLinkedList(unittest.TestCase):
         result = remove_nth_from_end(head, 1)
         self.assertEqual(1, result.val)
         self.assertEqual(2, result.next.val)
+
+    def test_reverse(self):
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(3)
+        result = reverse_list(head)
+        self.assertEqual(3, result.val)
+        self.assertEqual(2, result.next.val)
+        self.assertEqual(1, result.next.next.val)

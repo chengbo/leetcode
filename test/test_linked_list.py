@@ -1,5 +1,6 @@
 import unittest
 from leetcode.linked_list.cycle import has_cycle, has_cycle_ii
+from leetcode.linked_list.intersection import get_intersection_node
 from leetcode.linked_list.my_linked_list import MyLinkedList
 from leetcode.linked_list.node import SinglyListNode
 
@@ -71,3 +72,21 @@ class TestLinkedList(unittest.TestCase):
         head.next.next.next.next.next = SinglyListNode(6)
         head.next.next.next.next.next.next = node
         self.assertEqual(node, has_cycle_ii(head))
+
+    def test_get_intersection_node(self):
+        head_a = SinglyListNode(1)
+        head_a.next = SinglyListNode(2)
+        head_a.next.next = SinglyListNode(3)
+        head_b = SinglyListNode(1)
+        head_b.next = SinglyListNode(2)
+        head_b.next.next = SinglyListNode(3)
+        self.assertIsNone(get_intersection_node(head_a, head_b))
+
+        intersection = SinglyListNode(1)
+        intersection.next = SinglyListNode(2)
+        head_a = SinglyListNode(1)
+        head_a.next = intersection
+        head_b = SinglyListNode(1)
+        head_b.next = SinglyListNode(2)
+        head_b.next.next = intersection
+        self.assertEqual(intersection, get_intersection_node(head_a, head_b))

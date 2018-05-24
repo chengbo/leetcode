@@ -6,6 +6,7 @@ from leetcode.linked_list.node import SinglyListNode
 from leetcode.linked_list.remove_nth_from_end import remove_nth_from_end
 from leetcode.linked_list.reverse import reverse_list
 from leetcode.linked_list.remove_elements import remove_elements
+from leetcode.linked_list.odd_even import odd_even_list
 
 
 class TestLinkedList(unittest.TestCase):
@@ -156,3 +157,32 @@ class TestLinkedList(unittest.TestCase):
         result = remove_elements(head, 2)
         self.assertEqual(1, result.val)
         self.assertEqual(1, result.next.val)
+
+    def test_odd_even_list(self):
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(3)
+        head.next.next.next = SinglyListNode(4)
+        head.next.next.next.next = SinglyListNode(5)
+        result = odd_even_list(head)
+        self.assertEqual(1, result.val)
+        self.assertEqual(3, result.next.val)
+        self.assertEqual(5, result.next.next.val)
+        self.assertEqual(2, result.next.next.next.val)
+        self.assertEqual(4, result.next.next.next.next.val)
+
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        head.next.next = SinglyListNode(3)
+        head.next.next.next = SinglyListNode(4)
+        result = odd_even_list(head)
+        self.assertEqual(1, result.val)
+        self.assertEqual(3, result.next.val)
+        self.assertEqual(2, result.next.next.val)
+        self.assertEqual(4, result.next.next.next.val)
+
+        head = SinglyListNode(1)
+        head.next = SinglyListNode(2)
+        result = odd_even_list(head)
+        self.assertEqual(1, result.val)
+        self.assertEqual(2, result.next.val)

@@ -8,6 +8,7 @@ from leetcode.linked_list.reverse import reverse_list
 from leetcode.linked_list.remove_elements import remove_elements
 from leetcode.linked_list.odd_even import odd_even_list
 from leetcode.linked_list.palindrome import is_palindrome
+from leetcode.linked_list.merge_two_sorted_list import merge
 
 
 class TestLinkedList(unittest.TestCase):
@@ -218,3 +219,20 @@ class TestLinkedList(unittest.TestCase):
         head = SinglyListNode(1)
         head.next = SinglyListNode(2)
         self.assertFalse(is_palindrome(head))
+
+    def test_merge_two_sorted_list(self):
+        l1 = SinglyListNode(1)
+        l1.next = SinglyListNode(2)
+        l1.next.next = SinglyListNode(4)
+
+        l2 = SinglyListNode(1)
+        l2.next = SinglyListNode(3)
+        l2.next.next = SinglyListNode(4)
+
+        new = merge(l1, l2)
+        self.assertEqual(1, new.val)
+        self.assertEqual(1, new.next.val)
+        self.assertEqual(2, new.next.next.val)
+        self.assertEqual(3, new.next.next.next.val)
+        self.assertEqual(4, new.next.next.next.next.val)
+        self.assertEqual(4, new.next.next.next.next.next.val)

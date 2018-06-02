@@ -4,6 +4,7 @@ from leetcode.array.largest_number_at_least_twice_of_others import dominant_inde
 from leetcode.array.plus_one import plus_one
 from leetcode.array.diagonal_traverse import find_diagonal_order
 from leetcode.array.spiral_matrix import spiral_order
+from leetcode.array.pascals_triangle import generate
 
 
 class TestArray(unittest.TestCase):
@@ -59,3 +60,13 @@ class TestArray(unittest.TestCase):
         ]
         self.assertEqual([1, 2, 3, 4, 8, 12, 11, 10, 9,
                           5, 6, 7], spiral_order(matrix))
+
+    def test_generate_pascals_triangle(self):
+        result = [
+            [1],
+            [1, 1],
+            [1, 2, 1],
+            [1, 3, 3, 1],
+            [1, 4, 6, 4, 1]
+        ]
+        self.assertEqual(result, generate(5))

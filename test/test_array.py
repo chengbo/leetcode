@@ -2,6 +2,7 @@ import unittest
 from leetcode.array.find_pivot_index import find_pivot_index
 from leetcode.array.largest_number_at_least_twice_of_others import dominant_index
 from leetcode.array.plus_one import plus_one
+from leetcode.array.diagonal_traverse import find_diagonal_order
 
 
 class TestArray(unittest.TestCase):
@@ -32,3 +33,11 @@ class TestArray(unittest.TestCase):
 
         digits = [9, 9, 9]
         self.assertEqual([1, 0, 0, 0], plus_one(digits))
+
+    def test_find_diagonal_order(self):
+        matrix = [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]
+                ]
+        self.assertEqual([1, 2, 4, 7, 5, 3, 6, 8, 9], find_diagonal_order(matrix))

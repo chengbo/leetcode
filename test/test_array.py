@@ -6,6 +6,7 @@ from leetcode.array.diagonal_traverse import find_diagonal_order
 from leetcode.array.spiral_matrix import spiral_order
 from leetcode.array.pascals_triangle import generate
 from leetcode.array.add_binary import add_binary
+from leetcode.array.implement_strstr import str_str
 
 
 class TestArray(unittest.TestCase):
@@ -81,3 +82,19 @@ class TestArray(unittest.TestCase):
 
         a, b = '1010', '1011'
         self.assertEqual('10101', add_binary(a, b))
+
+    def test_str_str(self):
+        haystack, needle = "hello", ""
+        self.assertEqual(0, str_str(haystack, needle))
+
+        haystack, needle = "hello", "ll"
+        self.assertEqual(2, str_str(haystack, needle))
+
+        haystack, needle = "aaaaa", "bba"
+        self.assertEqual(-1, str_str(haystack, needle))
+
+        haystack, needle = "hello", "oa"
+        self.assertEqual(-1, str_str(haystack, needle))
+
+        haystack, needle = "aaa", "aaaa"
+        self.assertEqual(-1, str_str(haystack, needle))

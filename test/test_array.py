@@ -5,6 +5,7 @@ from leetcode.array.plus_one import plus_one
 from leetcode.array.diagonal_traverse import find_diagonal_order
 from leetcode.array.spiral_matrix import spiral_order
 from leetcode.array.pascals_triangle import generate
+from leetcode.array.add_binary import add_binary
 
 
 class TestArray(unittest.TestCase):
@@ -70,3 +71,13 @@ class TestArray(unittest.TestCase):
             [1, 4, 6, 4, 1]
         ]
         self.assertEqual(result, generate(5))
+
+    def test_add_binary(self):
+        a, b = '', '1'
+        self.assertEqual('1', add_binary(a, b))
+
+        a, b = '11', '1'
+        self.assertEqual('100', add_binary(a, b))
+
+        a, b = '1010', '1011'
+        self.assertEqual('10101', add_binary(a, b))

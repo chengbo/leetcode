@@ -7,6 +7,7 @@ from leetcode.array.spiral_matrix import spiral_order
 from leetcode.array.pascals_triangle import generate
 from leetcode.array.add_binary import add_binary
 from leetcode.array.implement_strstr import str_str
+from leetcode.array.longest_common_prefix import longest_common_prefix
 
 
 class TestArray(unittest.TestCase):
@@ -98,3 +99,13 @@ class TestArray(unittest.TestCase):
 
         haystack, needle = "aaa", "aaaa"
         self.assertEqual(-1, str_str(haystack, needle))
+
+    def test_longest_common_prefix(self):
+        strs = ['flower', 'flow', 'flight']
+        self.assertEqual('fl', longest_common_prefix(strs))
+
+        strs = ['dog', 'racecar', 'car']
+        self.assertEqual('', longest_common_prefix(strs))
+
+        strs = ['carplay', 'racecar', 'car']
+        self.assertEqual('', longest_common_prefix(strs))

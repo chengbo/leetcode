@@ -10,6 +10,7 @@ from leetcode.array.implement_strstr import str_str
 from leetcode.array.longest_common_prefix import longest_common_prefix
 from leetcode.array.reverse_string import reverse_string
 from leetcode.array.array_partition_i import array_pair_sum
+from leetcode.array.two_sum_ii import two_sum
 
 
 class TestArray(unittest.TestCase):
@@ -118,3 +119,6 @@ class TestArray(unittest.TestCase):
 
     def test_array_pair_sum(self):
         self.assertEqual(4, array_pair_sum([1, 4, 3, 2]))
+
+    def test_two_sum(self):
+        self.assertEqual([1, 2], two_sum([2, 7, 11, 15], 9))

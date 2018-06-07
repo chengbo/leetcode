@@ -13,6 +13,7 @@ from leetcode.array.array_partition_i import array_pair_sum
 from leetcode.array.two_sum_ii import two_sum
 from leetcode.array.remove_element import remove_element
 from leetcode.array.max_consecutive_ones import find_max_consecutive_ones
+from leetcode.array.minimum_size_subarray_sum import min_sub_array_len
 
 
 class TestArray(unittest.TestCase):
@@ -132,3 +133,7 @@ class TestArray(unittest.TestCase):
     def test_find_max_consecutive_ones(self):
         self.assertEqual(3, find_max_consecutive_ones([1, 1, 0, 1, 1, 1]))
         self.assertEqual(2, find_max_consecutive_ones([1, 0, 1, 1, 0, 1]))
+
+    def test_min_sub_array_len(self):
+        self.assertEqual(2, min_sub_array_len(7, [2, 3, 1, 2, 4, 3]))
+        self.assertEqual(0, min_sub_array_len(100, []))

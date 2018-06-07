@@ -12,6 +12,7 @@ from leetcode.array.reverse_string import reverse_string
 from leetcode.array.array_partition_i import array_pair_sum
 from leetcode.array.two_sum_ii import two_sum
 from leetcode.array.remove_element import remove_element
+from leetcode.array.max_consecutive_ones import find_max_consecutive_ones
 
 
 class TestArray(unittest.TestCase):
@@ -127,3 +128,7 @@ class TestArray(unittest.TestCase):
     def test_remove_element(self):
         self.assertEqual(2, remove_element([3, 2, 2, 3], 3))
         self.assertEqual(5, remove_element([0, 1, 2, 2, 3, 0, 4, 2], 2))
+
+    def test_find_max_consecutive_ones(self):
+        self.assertEqual(3, find_max_consecutive_ones([1, 1, 0, 1, 1, 1]))
+        self.assertEqual(2, find_max_consecutive_ones([1, 0, 1, 1, 0, 1]))

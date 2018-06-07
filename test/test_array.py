@@ -11,6 +11,7 @@ from leetcode.array.longest_common_prefix import longest_common_prefix
 from leetcode.array.reverse_string import reverse_string
 from leetcode.array.array_partition_i import array_pair_sum
 from leetcode.array.two_sum_ii import two_sum
+from leetcode.array.remove_element import remove_element
 
 
 class TestArray(unittest.TestCase):
@@ -122,3 +123,7 @@ class TestArray(unittest.TestCase):
 
     def test_two_sum(self):
         self.assertEqual([1, 2], two_sum([2, 7, 11, 15], 9))
+
+    def test_remove_element(self):
+        self.assertEqual(2, remove_element([3, 2, 2, 3], 3))
+        self.assertEqual(5, remove_element([0, 1, 2, 2, 3, 0, 4, 2], 2))

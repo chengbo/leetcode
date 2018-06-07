@@ -9,6 +9,7 @@ from leetcode.array.add_binary import add_binary
 from leetcode.array.implement_strstr import str_str
 from leetcode.array.longest_common_prefix import longest_common_prefix
 from leetcode.array.reverse_string import reverse_string
+from leetcode.array.array_partition_i import array_pair_sum
 
 
 class TestArray(unittest.TestCase):
@@ -114,3 +115,6 @@ class TestArray(unittest.TestCase):
     def test_reverse_string(self):
         self.assertEqual('olleh', reverse_string('hello'))
         self.assertEqual('', reverse_string(''))
+
+    def test_array_pair_sum(self):
+        self.assertEqual(4, array_pair_sum([1, 4, 3, 2]))

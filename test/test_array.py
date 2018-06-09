@@ -14,6 +14,7 @@ from leetcode.array.two_sum_ii import two_sum
 from leetcode.array.remove_element import remove_element
 from leetcode.array.max_consecutive_ones import find_max_consecutive_ones
 from leetcode.array.minimum_size_subarray_sum import min_sub_array_len
+from leetcode.array.rotate_array import rotate
 
 
 class TestArray(unittest.TestCase):
@@ -137,3 +138,17 @@ class TestArray(unittest.TestCase):
     def test_min_sub_array_len(self):
         self.assertEqual(2, min_sub_array_len(7, [2, 3, 1, 2, 4, 3]))
         self.assertEqual(0, min_sub_array_len(100, []))
+
+    def test_rotate_array(self):
+        nums = [1, 2, 3, 4, 5, 6, 7]
+        rotate(nums, 3)
+        self.assertEqual([5, 6, 7, 1, 2, 3, 4], nums)
+        nums = [-1, -100, 3, 99]
+        rotate(nums, 2)
+        self.assertEqual([3, 99, -1, -100], nums)
+        nums = []
+        rotate(nums, 0)
+        self.assertEqual([], nums)
+        nums = [-1]
+        rotate(nums, 2)
+        self.assertEqual([-1], nums)

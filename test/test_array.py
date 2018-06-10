@@ -16,6 +16,7 @@ from leetcode.array.max_consecutive_ones import find_max_consecutive_ones
 from leetcode.array.minimum_size_subarray_sum import min_sub_array_len
 from leetcode.array.rotate_array import rotate
 from leetcode.array.pascals_triangle_ii import get_row
+from leetcode.array.reverse_words_in_a_string import reverse_words
 
 
 class TestArray(unittest.TestCase):
@@ -160,3 +161,7 @@ class TestArray(unittest.TestCase):
         self.assertEqual([1, 2, 1], get_row(2))
         self.assertEqual([1, 3, 3, 1], get_row(3))
         self.assertEqual([1, 4, 6, 4, 1], get_row(4))
+
+    def test_reverse_words(self):
+        self.assertEqual('the sky is blue', reverse_words('  blue  is sky  the '))
+        self.assertEqual('the', reverse_words('the'))

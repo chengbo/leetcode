@@ -17,6 +17,7 @@ from leetcode.array.minimum_size_subarray_sum import min_sub_array_len
 from leetcode.array.rotate_array import rotate
 from leetcode.array.pascals_triangle_ii import get_row
 from leetcode.array.reverse_words_in_a_string import reverse_words
+from leetcode.array.reverse_words_in_a_string_iii import reverse_words as rw
 
 
 class TestArray(unittest.TestCase):
@@ -165,3 +166,6 @@ class TestArray(unittest.TestCase):
     def test_reverse_words(self):
         self.assertEqual('the sky is blue', reverse_words('  blue  is sky  the '))
         self.assertEqual('the', reverse_words('the'))
+
+    def test_reverse_words_iii(self):
+        self.assertEqual('s\'teL ekat edoCteeL tsetnoc', rw('Let\'s take LeetCode contest'))

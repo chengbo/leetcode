@@ -18,6 +18,7 @@ from leetcode.array.rotate_array import rotate
 from leetcode.array.pascals_triangle_ii import get_row
 from leetcode.array.reverse_words_in_a_string import reverse_words
 from leetcode.array.reverse_words_in_a_string_iii import reverse_words as rw
+from leetcode.array.remove_duplicates_from_sorted_array import remove_duplicates
 
 
 class TestArray(unittest.TestCase):
@@ -169,3 +170,7 @@ class TestArray(unittest.TestCase):
 
     def test_reverse_words_iii(self):
         self.assertEqual('s\'teL ekat edoCteeL tsetnoc', rw('Let\'s take LeetCode contest'))
+
+    def test_remove_duplicates(self):
+        self.assertEqual(2, remove_duplicates([1, 1, 2]))
+        self.assertEqual(5, remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))

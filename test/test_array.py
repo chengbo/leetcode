@@ -19,6 +19,7 @@ from leetcode.array.pascals_triangle_ii import get_row
 from leetcode.array.reverse_words_in_a_string import reverse_words
 from leetcode.array.reverse_words_in_a_string_iii import reverse_words as rw
 from leetcode.array.remove_duplicates_from_sorted_array import remove_duplicates
+from leetcode.array.move_zeroes import move_zeroes
 
 
 class TestArray(unittest.TestCase):
@@ -174,3 +175,14 @@ class TestArray(unittest.TestCase):
     def test_remove_duplicates(self):
         self.assertEqual(2, remove_duplicates([1, 1, 2]))
         self.assertEqual(5, remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
+
+    def test_move_zeroes(self):
+        nums = [0, 1, 0, 3, 12]
+        move_zeroes(nums)
+        self.assertEqual([1, 3, 12, 0, 0], nums)
+        nums = [2]
+        move_zeroes(nums)
+        self.assertEqual([2], nums)
+        nums = [0, 0, 1]
+        move_zeroes(nums)
+        self.assertEqual([1, 0, 0], nums)

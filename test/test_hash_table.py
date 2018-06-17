@@ -2,6 +2,7 @@ import unittest
 from leetcode.hash_table.design_hash_set import MyHashSet
 from leetcode.hash_table.design_hash_map import MyHashMap
 from leetcode.hash_table.contains_duplicate import contains_duplicate
+from leetcode.hash_table.single_number import single_number
 
 
 class TestArray(unittest.TestCase):
@@ -33,3 +34,7 @@ class TestArray(unittest.TestCase):
         self.assertTrue(contains_duplicate([1, 2, 3, 1]))
         self.assertFalse(contains_duplicate([1, 2, 3, 4]))
         self.assertTrue(contains_duplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))
+
+    def test_single_number(self):
+        self.assertEqual(1, single_number([2, 2, 1]))
+        self.assertEqual(4, single_number([4, 1, 2, 1, 2]))

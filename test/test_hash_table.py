@@ -1,6 +1,7 @@
 import unittest
 from leetcode.hash_table.design_hash_set import MyHashSet
 from leetcode.hash_table.design_hash_map import MyHashMap
+from leetcode.hash_table.contains_duplicate import contains_duplicate
 
 
 class TestArray(unittest.TestCase):
@@ -26,3 +27,9 @@ class TestArray(unittest.TestCase):
         self.assertEqual(1, hash_map.get(2))
         hash_map.remove(2)
         self.assertEqual(-1, hash_map.get(2))
+
+    def test_contains_duplicate(self):
+        self.assertFalse(contains_duplicate(None))
+        self.assertTrue(contains_duplicate([1, 2, 3, 1]))
+        self.assertFalse(contains_duplicate([1, 2, 3, 4]))
+        self.assertTrue(contains_duplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))

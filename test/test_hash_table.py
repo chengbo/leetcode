@@ -3,6 +3,7 @@ from leetcode.hash_table.design_hash_set import MyHashSet
 from leetcode.hash_table.design_hash_map import MyHashMap
 from leetcode.hash_table.contains_duplicate import contains_duplicate
 from leetcode.hash_table.single_number import single_number
+from leetcode.hash_table.intersection_of_two_arrays import intersection
 
 
 class TestArray(unittest.TestCase):
@@ -38,3 +39,6 @@ class TestArray(unittest.TestCase):
     def test_single_number(self):
         self.assertEqual(1, single_number([2, 2, 1]))
         self.assertEqual(4, single_number([4, 1, 2, 1, 2]))
+
+    def test_intersection(self):
+        self.assertEqual([2], intersection([1, 2, 2, 1], [2, 2]))

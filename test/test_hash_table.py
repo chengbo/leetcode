@@ -5,6 +5,7 @@ from leetcode.hash_table.contains_duplicate import contains_duplicate
 from leetcode.hash_table.single_number import single_number
 from leetcode.hash_table.intersection_of_two_arrays import intersection
 from leetcode.hash_table.happy_number import is_happy
+from leetcode.hash_table.two_sum import two_sum
 
 
 class TestArray(unittest.TestCase):
@@ -48,3 +49,9 @@ class TestArray(unittest.TestCase):
         self.assertTrue(is_happy(19))
         self.assertTrue(is_happy(7))
         self.assertFalse(is_happy(2))
+
+    def test_two_sum(self):
+        self.assertEqual([0, 1], two_sum([2, 7, 11, 15], 9))
+        self.assertEqual([1, 2], two_sum([2, 7, 11, 15], 18))
+        self.assertEqual([1, 2], two_sum([3, 2, 4], 6))
+        self.assertEqual([0, 1], two_sum([3, 3], 6))

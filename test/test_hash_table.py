@@ -7,6 +7,7 @@ from leetcode.hash_table.intersection_of_two_arrays import intersection
 from leetcode.hash_table.happy_number import is_happy
 from leetcode.hash_table.two_sum import two_sum
 from leetcode.hash_table.isomorphic_strings import is_isomorphic
+from leetcode.hash_table.minimum_index_sum_of_two_lists import find_restaurant
 
 
 class TestArray(unittest.TestCase):
@@ -62,3 +63,16 @@ class TestArray(unittest.TestCase):
         self.assertFalse(is_isomorphic('foo', 'bar'))
         self.assertTrue(is_isomorphic('paper', 'title'))
         self.assertFalse(is_isomorphic('ab', 'aa'))
+
+    def test_find_restaurant(self):
+        list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
+        list2 = ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+        self.assertEqual(["Shogun"], find_restaurant(list1, list2))
+
+        list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
+        list2 = ["KFC", "Shogun", "Burger King"]
+        self.assertEqual(["Shogun"], find_restaurant(list1, list2))
+
+        list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
+        list2 = ["Tapioca Express", "Shogun", "Burger King"]
+        self.assertEqual(["Tapioca Express", "Shogun"], find_restaurant(list1, list2))

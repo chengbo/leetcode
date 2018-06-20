@@ -10,6 +10,7 @@ from leetcode.hash_table.isomorphic_strings import is_isomorphic
 from leetcode.hash_table.minimum_index_sum_of_two_lists import find_restaurant
 from leetcode.hash_table.first_unique_character_in_a_string import first_uniq_char
 from leetcode.hash_table.intersection_of_two_arrays_ii import intersect
+from leetcode.hash_table.contains_duplicate_ii import contains_nearby_duplicate
 
 
 class TestArray(unittest.TestCase):
@@ -87,3 +88,8 @@ class TestArray(unittest.TestCase):
         self.assertEqual([2, 2], intersect([1, 2, 2, 1], [2, 2]))
         self.assertEqual([1], intersect([1], [1, 1]))
         self.assertEqual([1], intersect([1, 2], [1, 1]))
+
+    def test_contains_nearby_duplicate(self):
+        self.assertTrue(contains_nearby_duplicate([1, 2, 3, 1], 3))
+        self.assertTrue(contains_nearby_duplicate([1, 0, 1, 1], 1))
+        self.assertFalse(contains_nearby_duplicate([1, 2, 3, 1, 2, 3], 2))

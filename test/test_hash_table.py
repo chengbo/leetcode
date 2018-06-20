@@ -8,6 +8,7 @@ from leetcode.hash_table.happy_number import is_happy
 from leetcode.hash_table.two_sum import two_sum
 from leetcode.hash_table.isomorphic_strings import is_isomorphic
 from leetcode.hash_table.minimum_index_sum_of_two_lists import find_restaurant
+from leetcode.hash_table.first_unique_character_in_a_string import first_uniq_char
 
 
 class TestArray(unittest.TestCase):
@@ -76,3 +77,7 @@ class TestArray(unittest.TestCase):
         list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
         list2 = ["Tapioca Express", "Shogun", "Burger King"]
         self.assertEqual(["Tapioca Express", "Shogun"], find_restaurant(list1, list2))
+
+    def test_first_uniq_char(self):
+        self.assertEqual(0, first_uniq_char('leetcode'))
+        self.assertEqual(2, first_uniq_char('loveleetcode'))

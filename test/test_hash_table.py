@@ -9,6 +9,7 @@ from leetcode.hash_table.two_sum import two_sum
 from leetcode.hash_table.isomorphic_strings import is_isomorphic
 from leetcode.hash_table.minimum_index_sum_of_two_lists import find_restaurant
 from leetcode.hash_table.first_unique_character_in_a_string import first_uniq_char
+from leetcode.hash_table.intersection_of_two_arrays_ii import intersect
 
 
 class TestArray(unittest.TestCase):
@@ -81,3 +82,8 @@ class TestArray(unittest.TestCase):
     def test_first_uniq_char(self):
         self.assertEqual(0, first_uniq_char('leetcode'))
         self.assertEqual(2, first_uniq_char('loveleetcode'))
+
+    def test_intersect(self):
+        self.assertEqual([2, 2], intersect([1, 2, 2, 1], [2, 2]))
+        self.assertEqual([1], intersect([1], [1, 1]))
+        self.assertEqual([1], intersect([1, 2], [1, 1]))

@@ -11,6 +11,7 @@ from leetcode.hash_table.minimum_index_sum_of_two_lists import find_restaurant
 from leetcode.hash_table.first_unique_character_in_a_string import first_uniq_char
 from leetcode.hash_table.intersection_of_two_arrays_ii import intersect
 from leetcode.hash_table.contains_duplicate_ii import contains_nearby_duplicate
+from leetcode.hash_table.group_anagrams import group_anagrams
 
 
 class TestArray(unittest.TestCase):
@@ -93,3 +94,10 @@ class TestArray(unittest.TestCase):
         self.assertTrue(contains_nearby_duplicate([1, 2, 3, 1], 3))
         self.assertTrue(contains_nearby_duplicate([1, 0, 1, 1], 1))
         self.assertFalse(contains_nearby_duplicate([1, 2, 3, 1, 2, 3], 2))
+
+    def test_group_anagrams(self):
+        strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+        expected = [['ate', 'eat', 'tea'], ['nat', 'tan'], ['bat']]
+        result = group_anagrams(strs)
+        for i in range(len(expected)):
+            self.assertEqual(sorted(result[i]), sorted(expected[i]))

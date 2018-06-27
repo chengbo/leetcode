@@ -12,10 +12,10 @@ from leetcode.hash_table.first_unique_character_in_a_string import first_uniq_ch
 from leetcode.hash_table.intersection_of_two_arrays_ii import intersect
 from leetcode.hash_table.contains_duplicate_ii import contains_nearby_duplicate
 from leetcode.hash_table.group_anagrams import group_anagrams
+from leetcode.hash_table.valid_sudoku import is_valid_sudoku
 
 
 class TestArray(unittest.TestCase):
-
     def test_my_hash_set(self):
         hash_set = MyHashSet()
         hash_set.add(1)
@@ -70,7 +70,10 @@ class TestArray(unittest.TestCase):
 
     def test_find_restaurant(self):
         list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
-        list2 = ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+        list2 = [
+            "Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse",
+            "Shogun"
+        ]
         self.assertEqual(["Shogun"], find_restaurant(list1, list2))
 
         list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
@@ -79,7 +82,8 @@ class TestArray(unittest.TestCase):
 
         list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
         list2 = ["Tapioca Express", "Shogun", "Burger King"]
-        self.assertEqual(["Tapioca Express", "Shogun"], find_restaurant(list1, list2))
+        self.assertEqual(["Tapioca Express", "Shogun"],
+                         find_restaurant(list1, list2))
 
     def test_first_uniq_char(self):
         self.assertEqual(0, first_uniq_char('leetcode'))
@@ -101,3 +105,42 @@ class TestArray(unittest.TestCase):
         result = group_anagrams(strs)
         for i in range(len(expected)):
             self.assertEqual(sorted(result[i]), sorted(expected[i]))
+
+    def test_is_valid_sudoku(self):
+        board = [
+            ['5', '3', '.', '.', '7', '.', '.', '.', '.'],
+            ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+            ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+            ['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+            ['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+            ['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+            ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+            ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+            ['.', '.', '.', '.', '8', '.', '.', '7', '9']
+        ]  # yapf: disable
+        self.assertTrue(is_valid_sudoku(board))
+        board = [
+            ['8', '3', '.', '.', '7', '.', '.', '.', '.'],
+            ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+            ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+            ['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+            ['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+            ['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+            ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+            ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+            ['.', '.', '.', '.', '8', '.', '.', '7', '9']
+        ]  # yapf: diable
+        self.assertFalse(is_valid_sudoku(board))
+
+        board = [
+            [".", ".", ".", ".", "5", ".", ".", "1", "."],
+            [".", "4", ".", "3", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", "3", ".", ".", "1"],
+            ["8", ".", ".", ".", ".", ".", ".", "2", "."],
+            [".", ".", "2", ".", "7", ".", ".", ".", "."],
+            [".", "1", "5", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", "2", ".", ".", "."],
+            [".", "2", ".", "9", ".", ".", ".", ".", "."],
+            [".", ".", "4", ".", ".", ".", ".", ".", "."]
+        ]  # yapf: diable
+        self.assertFalse(is_valid_sudoku(board))

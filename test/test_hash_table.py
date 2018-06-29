@@ -13,6 +13,8 @@ from leetcode.hash_table.intersection_of_two_arrays_ii import intersect
 from leetcode.hash_table.contains_duplicate_ii import contains_nearby_duplicate
 from leetcode.hash_table.group_anagrams import group_anagrams
 from leetcode.hash_table.valid_sudoku import is_valid_sudoku
+from leetcode.hash_table.find_duplicate_subtrees import find_duplicate_subtrees
+from leetcode.binary_tree.serialize_and_deserialize import deserialize
 
 
 class TestArray(unittest.TestCase):
@@ -144,3 +146,18 @@ class TestArray(unittest.TestCase):
             [".", ".", "4", ".", ".", ".", ".", ".", "."]
         ]  # yapf: diable
         self.assertFalse(is_valid_sudoku(board))
+
+    def test_find_duplicate_subtrees(self):
+        """
+            1
+           / \
+          2   3
+         /   / \
+        4   2   4
+           /
+          4
+        """
+        root = deserialize('1,2,4,#,#,#,3,2,4,#,#,#,4,#,#')
+        result = find_duplicate_subtrees(root)
+        self.assertEqual(4, result[0].val)
+        self.assertEqual(2, result[1].val)

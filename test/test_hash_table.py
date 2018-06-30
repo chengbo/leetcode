@@ -16,6 +16,7 @@ from leetcode.hash_table.valid_sudoku import is_valid_sudoku
 from leetcode.hash_table.find_duplicate_subtrees import find_duplicate_subtrees
 from leetcode.binary_tree.serialize_and_deserialize import deserialize
 from leetcode.hash_table.jewels_and_stones import num_jewels_in_stones
+from leetcode.hash_table.longest_substring_without_repeating_characters import length_of_longest_substring
 
 
 class TestArray(unittest.TestCase):
@@ -168,3 +169,11 @@ class TestArray(unittest.TestCase):
         self.assertEqual(3, num_jewels_in_stones(j, s))
         j, s = 'z', 'ZZ'
         self.assertEqual(0, num_jewels_in_stones(j, s))
+
+    def test_length_of_longest_substring(self):
+        self.assertEqual(3, length_of_longest_substring('abcabcbb'))
+        self.assertEqual(1, length_of_longest_substring('bbbbb'))
+        self.assertEqual(3, length_of_longest_substring('pwwkew'))
+        self.assertEqual(1, length_of_longest_substring('c'))
+        self.assertEqual(3, length_of_longest_substring('dvdf'))
+        self.assertEqual(4, length_of_longest_substring('adbccba'))

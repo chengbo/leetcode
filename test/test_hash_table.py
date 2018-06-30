@@ -15,6 +15,7 @@ from leetcode.hash_table.group_anagrams import group_anagrams
 from leetcode.hash_table.valid_sudoku import is_valid_sudoku
 from leetcode.hash_table.find_duplicate_subtrees import find_duplicate_subtrees
 from leetcode.binary_tree.serialize_and_deserialize import deserialize
+from leetcode.hash_table.jewels_and_stones import num_jewels_in_stones
 
 
 class TestArray(unittest.TestCase):
@@ -161,3 +162,9 @@ class TestArray(unittest.TestCase):
         result = find_duplicate_subtrees(root)
         self.assertEqual(4, result[0].val)
         self.assertEqual(2, result[1].val)
+
+    def test_num_jewels_in_stores(self):
+        j, s = 'aA', 'aAAbbbb'
+        self.assertEqual(3, num_jewels_in_stones(j, s))
+        j, s = 'z', 'ZZ'
+        self.assertEqual(0, num_jewels_in_stones(j, s))

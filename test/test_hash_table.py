@@ -18,6 +18,7 @@ from leetcode.binary_tree.serialize_and_deserialize import deserialize
 from leetcode.hash_table.jewels_and_stones import num_jewels_in_stones
 from leetcode.hash_table.longest_substring_without_repeating_characters import length_of_longest_substring
 from leetcode.hash_table.four_sum_ii import four_sum_count
+from leetcode.hash_table.top_k_frequent_elements import top_k_frequent
 
 
 class TestArray(unittest.TestCase):
@@ -185,3 +186,7 @@ class TestArray(unittest.TestCase):
         c = [-1, 2]
         d = [0, 2]
         self.assertEqual(2, four_sum_count(a, b, c, d))
+
+    def test_top_k_frequent(self):
+        self.assertEqual([1, 2], top_k_frequent([1, 1, 1, 2, 2, 3], 2))
+        self.assertEqual([-1], top_k_frequent([-1, -1], 1))

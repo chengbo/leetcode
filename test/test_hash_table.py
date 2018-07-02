@@ -19,6 +19,7 @@ from leetcode.hash_table.jewels_and_stones import num_jewels_in_stones
 from leetcode.hash_table.longest_substring_without_repeating_characters import length_of_longest_substring
 from leetcode.hash_table.four_sum_ii import four_sum_count
 from leetcode.hash_table.top_k_frequent_elements import top_k_frequent
+from leetcode.hash_table.insert_delete_getrandom_o1 import RandomizedSet
 
 
 class TestArray(unittest.TestCase):
@@ -190,3 +191,13 @@ class TestArray(unittest.TestCase):
     def test_top_k_frequent(self):
         self.assertEqual([1, 2], top_k_frequent([1, 1, 1, 2, 2, 3], 2))
         self.assertEqual([-1], top_k_frequent([-1, -1], 1))
+
+    def test_randomized_set(self):
+        obj = RandomizedSet()
+        self.assertTrue(obj.insert(1))
+        self.assertFalse(obj.remove(2))
+        self.assertTrue(obj.insert(2))
+        self.assertIn(obj.get_random(), [1, 2])
+        self.assertTrue(obj.remove(1))
+        self.assertFalse(obj.insert(2))
+        self.assertEqual(obj.get_random(), 2)
